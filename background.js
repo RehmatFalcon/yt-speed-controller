@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener(
       chrome.browserAction.setBadgeText({text: `${playbackRate}`});
       chrome.tabs.executeScript({
         code: `
-         SetPlaybackRate(${request.speed});       
+         (typeof SetPlaybackRate === 'function') && SetPlaybackRate(${request.speed});
         `
       });
       sendResponse();
